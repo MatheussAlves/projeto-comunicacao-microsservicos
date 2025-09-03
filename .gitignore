@@ -1,1 +1,10 @@
 node_modules/
+sales-api/node_modules/
+auth-api/node_modules/
+# Gradle
+.gradle/
+build/
+
+# IntelliJ / IDEs
+.idea/
+*.iml
