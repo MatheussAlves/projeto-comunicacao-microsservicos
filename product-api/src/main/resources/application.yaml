@@ -5,6 +5,8 @@ spring:
   application:
     name: product-api
 
+  main:
+    allow-bean-definition-overriding: true
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -17,6 +19,13 @@ spring:
     platform: postgresql
     maxActive: 3
 
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:localhost}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USER:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+    virtual-host: ${RABBIT_MQ_VHOST:}
+
 
   jpa:
     hibernate:
@@ -26,3 +35,24 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+app-config:
+
+  services:
+    sales: http://${SALES_HOST:localhost}:${SALES_PORT:8082}
+
+  secrets:
+    api-secret: ${API_SECRET:YXV0aC1hcGktc2VjcmV0LWRldi0xMjM0NTY=}
+
+  rabbit:
+    exchange:
+      product: product.topic
+
+    routingKey:
+      product-stock: product-stock-update.routingKey
+      sales-confirmation: sales-confirmation.routingKey
+
+    queue:
+      product-stock: product-stock-update.queue
+      sales-confirmation: sales-confirmation.queue
