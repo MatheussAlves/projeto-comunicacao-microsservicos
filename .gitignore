@@ -8,3 +8,4 @@ build/
 # IntelliJ / IDEs
 .idea/
 *.iml
+product-api/build/tmp/compileJava/previous-compilation-data.bin
