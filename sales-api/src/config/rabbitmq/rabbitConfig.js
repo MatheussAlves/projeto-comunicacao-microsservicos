@@ -1,5 +1,5 @@
 import amqp from "amqplib/callback_api.js";
-//import { listenToSalesConfirmationQueue } from "../../modules/sales/rabbitmq/salesConfirmationListener.js";
+import { listenToSalesConfirmationQueue } from "../../modules/sales/rabbitmq/salesConfirmationListener.js";
 
 import {
   PRODUCT_TOPIC,
@@ -41,7 +41,7 @@ async function connectRabbitMqAndCreateQueues() {
     }, TWO_SECONDS);
   });
   setTimeout(function () {
-    //listenToSalesConfirmationQueue();
+    listenToSalesConfirmationQueue();
   }, TWO_SECONDS);
 }
 
